@@ -316,22 +316,22 @@ int BackgroundModule::background_functions(double* pvecback_B, /* Vector contain
 
   /** - compute each component's density and pressure */
 
-  /* photons */
-  pvecback[index_bg_rho_g_] = pba->Omega0_g*pow(pba->H0, 2)/pow(a_rel, 4);
+  /* LAVET OM photons */
+  pvecback[index_bg_rho_g_] = pba->Omega0_g*pow(pba->H0, 2)/pow(a_rel, 1);
   rho_tot += pvecback[index_bg_rho_g_];
   p_tot += 1./3.*pvecback[index_bg_rho_g_];
   dp_dloga += -4./3.*pvecback[index_bg_rho_g_];
   rho_r += pvecback[index_bg_rho_g_];
 
-  /* baryons */
-  pvecback[index_bg_rho_b_] = pba->Omega0_b*pow(pba->H0, 2)/pow(a_rel, 3);
+  /* LAVET OM baryons */
+  pvecback[index_bg_rho_b_] = pba->Omega0_b*pow(pba->H0, 2)/pow(a_rel, 2);
   rho_tot += pvecback[index_bg_rho_b_];
   p_tot += 0;
   rho_m += pvecback[index_bg_rho_b_];
 
-  /* cdm */
+  /* LAVET OM cdm */
   if (pba->has_cdm == _TRUE_) {
-    pvecback[index_bg_rho_cdm_] = pba->Omega0_cdm*pow(pba->H0, 2)/pow(a_rel, 3);
+    pvecback[index_bg_rho_cdm_] = pba->Omega0_cdm*pow(pba->H0, 2)/pow(a_rel, 2);
     rho_tot += pvecback[index_bg_rho_cdm_];
     p_tot += 0.;
     rho_m += pvecback[index_bg_rho_cdm_];
